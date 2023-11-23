@@ -70,33 +70,44 @@ function barchart_alice() {
           .attr("class", "axisLabel")
           .attr("transform", "translate(" + yLabelOffsetPx + ", -12)")
           .text(yLabelText);
+        
+    // svg.append("path")
+    //   // Add the line
+    //   svg.append("path")
+    //       .datum(data)
+    //       .attr("class", "linePath")
+    //       .attr("d", d3.line()
+    //         // Just add that to have a curve instead of segments
+    //         .x(X)
+    //         .y(Y)
+    //       );
   
-      // Add the line
-      svg.append("path")
-          .datum(data)
-          .attr("class", "linePath")
-          .attr("d", d3.line()
-            // Just add that to have a curve instead of segments
-            .x(X)
-            .y(Y)
-          );
-  
-      // Add the points
-      let points = svg.append("g")
-        .selectAll(".linePoint")
-          .data(data);
+    //   // Add the points
+    //   let points = svg.append("g")
+    //     .selectAll(".linePoint")
+    //       .data(data);
       
-      points.exit().remove();
+    //   points.exit().remove();
             
-      points = points.enter()
-        .append("circle")
-          .attr("class", "point linePoint")
-        .merge(points)
-          .attr("cx", X)
-          .attr("cy", Y)        
-          .attr("r",5);
+    //   points = points.enter()
+    //     .append("circle")
+    //       .attr("class", "point linePoint")
+    //     .merge(points)
+    //       .attr("cx", X)
+    //       .attr("cy", Y)        
+    //       .attr("r",5);
+
+    // svg.selectAll("myRect")
+    //     .data(data)
+    //     .enter()
+    //     .append("rect")
+    //         .attr("x", xAxis(0))
+    //         .attr("y", function(d) { return yAxis(d.alice); })
+    //         .attr("width", function(d) { return xAxis(d.unigram); })
+    //         .attr("height", yAxis.bandwidth())
+    //         .attr("fill", "#52b7d8")
           
-      selectableElements = points;
+    //   selectableElements = bars;
   
       svg.call(brush);
   

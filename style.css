@@ -47,24 +47,35 @@ h1, h2, h3 {
 	text-align: center;
 }
 
-  /* titles
-.title-holder {
-	width: 100%;
-	height: 100%;
-	display: flex;
-  }
-
-.alice-title {
-	flex: 0 0 33%;
+.barchart-alice-holder {
+	border-style: solid;
+	border-width: 5px;
+	border-color: white;
 }
 
-.austen-title {
-	flex: 0 0 33%;
+.barchart-austen-holder {
+	border-style: solid;
+	border-width: 5px;
+	border-color: white;
 }
 
-.gatsby-title {
-	flex: 0 0 33%;
-} */
+.barchart-gatsby-holder {
+	border-style: solid;
+	border-width: 5px;
+	border-color: white;
+}
+
+.alice-bar-selected {
+	border-color: #52b7d8;
+}
+
+.austen-bar-selected {
+	border-color: #e16031;
+}
+
+.gatsby-bar-selected {
+	border-color: #ffab40;
+}
 
 /* Fork on GitHub ribbon via https://codepo8.github.io/css-fork-on-github-ribbon/# */  
 #forkongithub a{
