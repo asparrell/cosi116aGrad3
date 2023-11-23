@@ -19,7 +19,52 @@ h1, h2, h3 {
 .vis-holder {
   width: 100%;
   height: 100%;
+  display: flex;
 }
+
+/* The barcharts each take up 1/3 of the screen */
+.alice-holder {
+	flex: 0 0 33%;
+  }
+
+.austen-holder {
+	flex: 0 0 33%;
+  }
+
+.gatsby-holder {
+	flex: 0 0 33%;
+  }
+
+.alice-title {
+	text-align: center;
+}
+
+.austen-title {
+	text-align: center;
+}
+
+.gatsby-title {
+	text-align: center;
+}
+
+  /* titles
+.title-holder {
+	width: 100%;
+	height: 100%;
+	display: flex;
+  }
+
+.alice-title {
+	flex: 0 0 33%;
+}
+
+.austen-title {
+	flex: 0 0 33%;
+}
+
+.gatsby-title {
+	flex: 0 0 33%;
+} */
 
 /* Fork on GitHub ribbon via https://codepo8.github.io/css-fork-on-github-ribbon/# */  
 #forkongithub a{
