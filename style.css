@@ -37,29 +37,35 @@ h1, h2, h3 {
 
 .alice-title {
 	text-align: center;
+	font-weight:bold;
+	font-size: 20px;
 }
 
 .austen-title {
 	text-align: center;
+	font-weight:bold;
+	font-size: 20px;
 }
 
 .gatsby-title {
 	text-align: center;
+	font-weight:bold;
+	font-size: 20px;
 }
 
-.barchart-alice-holder {
+.alice-barchart-holder {
 	border-style: solid;
 	border-width: 5px;
 	border-color: white;
 }
 
-.barchart-austen-holder {
+.austen-barchart-holder {
 	border-style: solid;
 	border-width: 5px;
 	border-color: white;
 }
 
-.barchart-gatsby-holder {
+.gatsby-barchart-holder {
 	border-style: solid;
 	border-width: 5px;
 	border-color: white;

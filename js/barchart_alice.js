@@ -6,17 +6,15 @@ function barchart_alice() {
         top: 60,
         left: 50,
         right: 30,
-        bottom: 35
+        bottom: 20
       },
       width = 500 - margin.left - margin.right,
       height = 500 - margin.top - margin.bottom,
-      xValue = d => d[0],
-      yValue = d => d[1],
       xLabelText = "",
       yLabelText = "",
       yLabelOffsetPx = 0,
-      xScale = d3.scalePoint(),
-      yScale = d3.scaleLinear(),
+      xScale = d3.scaleLinear(),
+      yScale = d3.scaleBand(),
       ourBrush = null,
       selectableElements = d3.select(null),
       dispatcher;
@@ -32,30 +30,32 @@ function barchart_alice() {
   
       svg = svg.append("g")
           .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-  
+
+      // sort data from greatest to least
+      data.sort(function(b, a) {
+        return b.alice - a.alice;
+      });
+
+      // function to show top [#] bars
+      function topBars(top, data){
+        return data.slice(data.length-top, data.length)
+      };
+
+      data = topBars(5, data);
+
       //Define scales
       xScale
-        .domain(d3.map(data, xValue).keys())
+        .domain([0, d3.max(data, d => xValue(d))])
         .rangeRound([0, width]);
   
       yScale
-        .domain([
-          d3.min(data, d => yValue(d)),
-          d3.max(data, d => yValue(d))
-        ])
+        .domain(d3.map(data, yValue).keys())
         .rangeRound([height, 0]);
   
       // X axis
       let xAxis = svg.append("g")
           .attr("transform", "translate(0," + (height) + ")")
           .call(d3.axisBottom(xScale));
-          
-      // Put X axis tick labels at an angle
-      xAxis.selectAll("text") 
-          .style("text-anchor", "end")
-          .attr("dx", "-.8em")
-          .attr("dy", ".15em")
-          .attr("transform", "rotate(-65)");
           
       // X axis label
       xAxis.append("text")        
@@ -70,45 +70,20 @@ function barchart_alice() {
           .attr("class", "axisLabel")
           .attr("transform", "translate(" + yLabelOffsetPx + ", -12)")
           .text(yLabelText);
-        
-    // svg.append("path")
-    //   // Add the line
-    //   svg.append("path")
-    //       .datum(data)
-    //       .attr("class", "linePath")
-    //       .attr("d", d3.line()
-    //         // Just add that to have a curve instead of segments
-    //         .x(X)
-    //         .y(Y)
-    //       );
-  
-    //   // Add the points
-    //   let points = svg.append("g")
-    //     .selectAll(".linePoint")
-    //       .data(data);
-      
-    //   points.exit().remove();
-            
-    //   points = points.enter()
-    //     .append("circle")
-    //       .attr("class", "point linePoint")
-    //     .merge(points)
-    //       .attr("cx", X)
-    //       .attr("cy", Y)        
-    //       .attr("r",5);
 
-    // svg.selectAll("myRect")
-    //     .data(data)
-    //     .enter()
-    //     .append("rect")
-    //         .attr("x", xAxis(0))
-    //         .attr("y", function(d) { return yAxis(d.alice); })
-    //         .attr("width", function(d) { return xAxis(d.unigram); })
-    //         .attr("height", yAxis.bandwidth())
-    //         .attr("fill", "#52b7d8")
+      let bars = svg.append("g")
+          .attr("fill", "#52b7d8")
+        .selectAll()
+        .data(data)
+        .enter().append("rect")
+          .attr("x", (d) => xScale(0) + 1)
+          .attr("y", (d) => yScale(d.unigram)+15)
+          .attr("width", (d) => {console.log(width, xScale(d.alice)); return xScale(d.alice)})
+          .attr("height", yScale.bandwidth()-30);
           
-    //   selectableElements = bars;
-  
+      selectableElements = bars;
+      
+      // leaving this brush here in case we need it
       svg.call(brush);
   
       // Highlight points when brushed
@@ -132,7 +107,7 @@ function barchart_alice() {
             [x0, y0],
             [x1, y1]
           ] = d3.event.selection;
-          points.classed("selected", d =>
+          bars.classed("selected", d =>
             x0 <= X(d) && X(d) <= x1 && y0 <= Y(d) && Y(d) <= y1
           );
   

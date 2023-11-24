@@ -68,7 +68,6 @@ console.log(d3.select("#textboxx").property);
   // Load the data from a json file (you can make these using
   // JSON.stringify(YOUR_OBJECT), just remove the surrounding "")
   d3.csv("data/test.csv", (data) => {
-    console.log(data);
     // General event type for selections, used by d3-dispatch
     // https://github.com/d3/d3-dispatch
     const dispatchString = "selectionUpdated";
@@ -77,28 +76,28 @@ console.log(d3.select("#textboxx").property);
     // a dispatcher (d3-dispatch) for selection events; 
     // a div id selector to put our svg in; and the data to use.
     let alice_bar = barchart_alice()
-      .x(d => d.unigram)
-      .xLabel("UNIGRAM")
-      .y(d => d.alice)
-      .yLabel("UNIPROB")
+      .x(d => d.alice)
+      .xLabel("UNIPROB")
+      .y(d => d.unigram)
+      .yLabel("UNIGRAM")
       .yLabelOffset(40)
       .selectionDispatcher(d3.dispatch(dispatchString))
       ("#barchart_alice", data);
 
       let austen_bar = barchart_austen()
-      .x(d => d.unigram)
-      .xLabel("UNIGRAM")
-      .y(d => d.austen)
-      .yLabel("UNIPROB")
+      .x(d => d.austen)
+      .xLabel("UNIPROB")
+      .y(d => d.unigram)
+      .yLabel("UNIGRAM")
       .yLabelOffset(40)
       .selectionDispatcher(d3.dispatch(dispatchString))
       ("#barchart_austen", data);
 
       let gatsby_bar = barchart_gatsby()
-      .x(d => d.unigram)
-      .xLabel("UNIGRAM")
-      .y(d => d.gatsby)
-      .yLabel("UNIPROB")
+      .x(d => d.gatsby)
+      .xLabel("UNIPROB")
+      .y(d => d.unigram)
+      .yLabel("UNIGRAM")
       .yLabelOffset(40)
       .selectionDispatcher(d3.dispatch(dispatchString))
       ("#barchart_gatsby", data);
