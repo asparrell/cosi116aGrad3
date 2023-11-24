@@ -54,9 +54,53 @@ function updateText(index) {
   d3.select("#textbox").property("value", passages[index]);
 }
 
-d3.select("#btn1").on("click", () => updateText(0));
-d3.select("#btn2").on("click", () => updateText(1));
-d3.select("#btn3").on("click", () => updateText(2));
+d3.select("#barchart_alice").on("click", () => updateText(0));
+d3.select("#barchart_austen").on("click", () => updateText(1));
+d3.select("#barchart_gatsby").on("click", () => updateText(2));
 
 updateText(0);
-console.log(d3.select("#textboxx").property)
+console.log(d3.select("#textboxx").property);
+
+// Immediately Invoked Function Expression to limit access to our 
+// variables and prevent race conditions
+((() => {
+
+  // Load the data from a json file (you can make these using
+  // JSON.stringify(YOUR_OBJECT), just remove the surrounding "")
+  d3.csv("data/test.csv", (data) => {
+    // General event type for selections, used by d3-dispatch
+    // https://github.com/d3/d3-dispatch
+    const dispatchString = "selectionUpdated";
+
+    // Create a line chart given x and y attributes, labels, offsets; 
+    // a dispatcher (d3-dispatch) for selection events; 
+    // a div id selector to put our svg in; and the data to use.
+    let alice_bar = barchart_alice()
+      .x(d => d.alice)
+      .xLabel("UNIPROB")
+      .y(d => d.unigram)
+      .yLabel("UNIGRAM")
+      .yLabelOffset(40)
+      .selectionDispatcher(d3.dispatch(dispatchString))
+      ("#barchart_alice", data);
+
+      let austen_bar = barchart_austen()
+      .x(d => d.austen)
+      .xLabel("UNIPROB")
+      .y(d => d.unigram)
+      .yLabel("UNIGRAM")
+      .yLabelOffset(40)
+      .selectionDispatcher(d3.dispatch(dispatchString))
+      ("#barchart_austen", data);
+
+      let gatsby_bar = barchart_gatsby()
+      .x(d => d.gatsby)
+      .xLabel("UNIPROB")
+      .y(d => d.unigram)
+      .yLabel("UNIGRAM")
+      .yLabelOffset(40)
+      .selectionDispatcher(d3.dispatch(dispatchString))
+      ("#barchart_gatsby", data);
+  });
+
+})());
