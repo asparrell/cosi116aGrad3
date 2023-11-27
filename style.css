@@ -19,6 +19,68 @@ h1, h2, h3 {
 .vis-holder {
   width: 100%;
   height: 100%;
+  display: flex;
+}
+
+/* The barcharts each take up 1/3 of the screen */
+.alice-holder {
+	flex: 0 0 33%;
+  }
+
+.austen-holder {
+	flex: 0 0 33%;
+  }
+
+.gatsby-holder {
+	flex: 0 0 33%;
+  }
+
+.alice-title {
+	text-align: center;
+	font-weight:bold;
+	font-size: 20px;
+}
+
+.austen-title {
+	text-align: center;
+	font-weight:bold;
+	font-size: 20px;
+}
+
+.gatsby-title {
+	text-align: center;
+	font-weight:bold;
+	font-size: 20px;
+}
+
+.alice-barchart-holder {
+	border-style: solid;
+	border-width: 5px;
+	border-color: white;
+}
+
+.austen-barchart-holder {
+	border-style: solid;
+	border-width: 5px;
+	border-color: white;
+}
+
+.gatsby-barchart-holder {
+	border-style: solid;
+	border-width: 5px;
+	border-color: white;
+}
+
+.alice-bar-selected {
+	border-color: #52b7d8;
+}
+
+.austen-bar-selected {
+	border-color: #e16031;
+}
+
+.gatsby-bar-selected {
+	border-color: #ffab40;
 }
 
 /* Fork on GitHub ribbon via https://codepo8.github.io/css-fork-on-github-ribbon/# */  
