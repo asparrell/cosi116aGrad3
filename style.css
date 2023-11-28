@@ -55,32 +55,38 @@ h1, h2, h3 {
 
 .alice-barchart-holder {
 	border-style: solid;
-	border-width: 5px;
-	border-color: white;
+	border-width: 2px 1px 2px 2px;
+	border-color: #808080;
 }
 
 .austen-barchart-holder {
 	border-style: solid;
-	border-width: 5px;
-	border-color: white;
+	border-width: 2px 1px 2px 1px;
+	border-color: #808080;
 }
 
 .gatsby-barchart-holder {
 	border-style: solid;
-	border-width: 5px;
-	border-color: white;
+	border-width: 2px 2px 2px 1px;
+	border-color: #808080;
 }
 
 .alice-bar-selected {
 	border-color: #52b7d8;
+	border-width: 2px;
+	box-shadow: 0px 0px 4px 2px #52b7d8, inset 0px 0px 4px #52b7d8;
 }
 
 .austen-bar-selected {
 	border-color: #e16031;
+	border-width: 2px;
+	box-shadow: 0px 0px 4px 2px #e16031, inset 0px 0px 4px #e16031;
 }
 
 .gatsby-bar-selected {
 	border-color: #ffab40;
+	border-width: 2px;
+	box-shadow: 0px 0px 4px 2px #ffab40, inset 0px 0px 4px #ffab40;
 }
 
 /* Fork on GitHub ribbon via https://codepo8.github.io/css-fork-on-github-ribbon/# */  
@@ -117,7 +123,7 @@ h1, h2, h3 {
 }
 @media screen and (min-width:1000px){
 	#forkongithub{
-		position:fixed;
+		/*position:fixed;*/
 		display:block;
 		top:0;
 		right:0;

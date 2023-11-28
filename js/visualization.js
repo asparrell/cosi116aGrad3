@@ -58,6 +58,9 @@ d3.select("#barchart_alice").on("click", () => updateText(0));
 d3.select("#barchart_austen").on("click", () => updateText(1));
 d3.select("#barchart_gatsby").on("click", () => updateText(2));
 
+
+d3.select(".vis-holder").append("svg").append("g").append("rect")
+
 updateText(0);
 console.log(d3.select("#textboxx").property);
 
