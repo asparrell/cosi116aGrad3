@@ -59,7 +59,7 @@ d3.select("#barchart_austen").on("click", () => updateText(1));
 d3.select("#barchart_gatsby").on("click", () => updateText(2));
 
 updateText(0);
-console.log(d3.select("#textboxx").property);
+console.log(d3.select("#textbox").property);
 
 // Immediately Invoked Function Expression to limit access to our 
 // variables and prevent race conditions
@@ -67,7 +67,7 @@ console.log(d3.select("#textboxx").property);
 
   // Load the data from a json file (you can make these using
   // JSON.stringify(YOUR_OBJECT), just remove the surrounding "")
-  d3.csv("data/test.csv", (data) => {
+  d3.csv("data/unicounts_reversed.csv", (data) => {
     // General event type for selections, used by d3-dispatch
     // https://github.com/d3/d3-dispatch
     const dispatchString = "selectionUpdated";
@@ -83,7 +83,7 @@ console.log(d3.select("#textboxx").property);
       .yLabelOffset(40)
       .selectionDispatcher(d3.dispatch(dispatchString))
       ("#barchart_alice", data);
-
+  
       let austen_bar = barchart_austen()
       .x(d => d.austen)
       .xLabel("UNIPROB")
