@@ -31,18 +31,6 @@ function barchart_alice() {
       svg = svg.append("g")
           .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-      // sort data from greatest to least
-      data.sort(function(b, a) {
-        return b.alice - a.alice;
-      });
-
-      // function to show top [#] bars
-      function topBars(top, data){
-        return data.slice(data.length-top, data.length)
-      };
-
-      data = topBars(5, data);
-
       //Define scales
       xScale
         .domain([0, d3.max(data, d => xValue(d))])

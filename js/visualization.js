@@ -49,6 +49,7 @@ const passages = [
    fundamental decencies is parcelled out unequally at birth."`
 ];
 
+<<<<<<< Updated upstream
 // press the button(will be chart later) to change the text display
 function updateText(index) {
   d3.select("#textbox").property("value", passages[index]);
@@ -64,27 +65,60 @@ d3.select(".vis-holder").append("svg").append("g").append("rect")
 updateText(0);
 console.log(d3.select("#textboxx").property);
 
+=======
+>>>>>>> Stashed changes
 // Immediately Invoked Function Expression to limit access to our 
 // variables and prevent race conditions
 ((() => {
 
   // Load the data from a json file (you can make these using
   // JSON.stringify(YOUR_OBJECT), just remove the surrounding "")
+<<<<<<< Updated upstream
   d3.csv("data/test.csv", (data) => {
+=======
+  d3.csv("data/uniprobs_reversed.csv", (data) => {
+>>>>>>> Stashed changes
     // General event type for selections, used by d3-dispatch
     // https://github.com/d3/d3-dispatch
     const dispatchString = "selectionUpdated";
 
+    const top = 5;
+
+    aliceSort = data.sort(function(b, a) {
+        return b.alice - a.alice;
+      }).slice(data.length-top, data.length);
+
+    austenSort = data.sort(function(b, a) {
+        return b.austen - a.austen;
+      }).slice(data.length-top, data.length);
+
+    gatsbySort = data.sort(function(b, a) {
+        return b.gatsby - a.gatsby;
+      }).slice(data.length-top, data.length);
+
     // Create a line chart given x and y attributes, labels, offsets; 
     // a dispatcher (d3-dispatch) for selection events; 
     // a div id selector to put our svg in; and the data to use.
-    let alice_bar = barchart_alice()
-      .x(d => d.alice)
+    function createChart(id, sortData) {
+      if (id === "#barchart_alice") {
+        obj = barchart_alice();
+        attr = "alice";
+      }
+      if (id === "#barchart_austen") {
+        obj = barchart_austen();
+        attr = "austen";
+      }
+      if (id === "#barchart_gatsby") {
+        obj = barchart_gatsby();
+        attr = "gatsby";
+      }
+      return obj.x(d => d[attr])
       .xLabel("UNIPROB")
       .y(d => d.unigram)
       .yLabel("UNIGRAM")
       .yLabelOffset(40)
       .selectionDispatcher(d3.dispatch(dispatchString))
+<<<<<<< Updated upstream
       ("#barchart_alice", data);
 
       let austen_bar = barchart_austen()
@@ -95,15 +129,31 @@ console.log(d3.select("#textboxx").property);
       .yLabelOffset(40)
       .selectionDispatcher(d3.dispatch(dispatchString))
       ("#barchart_austen", data);
+=======
+      (id, sortData);
+    }
+>>>>>>> Stashed changes
 
-      let gatsby_bar = barchart_gatsby()
-      .x(d => d.gatsby)
-      .xLabel("UNIPROB")
-      .y(d => d.unigram)
-      .yLabel("UNIGRAM")
-      .yLabelOffset(40)
-      .selectionDispatcher(d3.dispatch(dispatchString))
-      ("#barchart_gatsby", data);
+    let alice_bar = createChart("#barchart_alice", aliceSort);
+  
+    let austen_bar = createChart("#barchart_austen", austenSort);
+
+    let gatsby_bar = createChart("#barchart_gatsby", gatsbySort);
+
+      function replaceChart(data_idx) {
+        ids = ["#barchart_alice", "#barchart_austen", "#barchart_gatsby"]
+        sortedData = [aliceSort, austenSort, gatsbySort]
+        d3.select("#textbox").property("value", passages[data_idx]);
+        for (i = 0; i < ids.length; i++) {
+          selection = d3.select(ids[i]);
+          selection.selectAll("svg").remove();
+          selection.append(createChart(ids[i], sortedData[data_idx]))
+        }
+      }
+
+      d3.select("#barchart_alice").on("click", () => replaceChart(0));
+      d3.select("#barchart_austen").on("click", () => replaceChart(1));
+      d3.select("#barchart_gatsby").on("click", () => replaceChart(2));
   });
 
 })());
