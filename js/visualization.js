@@ -116,8 +116,6 @@ const passages = [
           selection.append();
         }
       }
-
-
   });
 
 })());
