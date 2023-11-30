@@ -31,6 +31,7 @@ function barchart_gatsby() {
     svg = svg.append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+<<<<<<< HEAD
     // sort data from greatest to least
     data.sort(function(b, a) {
       return b.gatsby - a.gatsby;
@@ -43,6 +44,8 @@ function barchart_gatsby() {
 
     data = topBars(5, data);
 
+=======
+>>>>>>> main
     //Define scales
     xScale
       .domain([0, d3.max(data, d => xValue(d))])

@@ -25,7 +25,11 @@
 <body>
 
   <!-- Update this with your GitHub repo URL -->
+<<<<<<< HEAD
   <span id="forkongithub"><a href="https://github.com/asparrell/cosi116aGrad3">Fork me on GitHub</a></span>
+=======
+<!--  <span id="forkongithub"><a href="https://github.com/asparrell/cosi116aGrad3">Fork on GitHub</a></span>-->
+>>>>>>> main
 
   <!-- Your writeup goes here -->
   <div class = "content-column">
@@ -52,6 +56,7 @@
 
   <!-- <div class -->
   <div class="vis-holder">
+<<<<<<< HEAD
     <div class="alice-holder">
       <div class="alice-title" id="alice-title">Alice in Wonderland</div>
       <div class="alice-barchart-holder" id="barchart_alice" onclick="selectedBackground('barchart_alice', 'alice-bar-selected')"></div>
@@ -63,12 +68,30 @@
     <div class="gatsby-holder">
       <div class="gatsby-title" id="gatsby-title">The Great Gatsby</div>
       <div class="gatsby-barchart-holder" id="barchart_gatsby" onclick="selectedBackground('barchart_gatsby', 'gatsby-bar-selected')"></div>
+=======
+    <div id="alice-holder">
+      <div id="alice-title">Alice in Wonderland</div>
+      <div id="barchart_alice" onclick="selectedBorder('barchart_alice')"></div>
+    </div>
+    <div id="austen-holder">
+      <div id="austen-title">Pride and Prejudice</div>
+      <div id="barchart_austen" onclick="selectedBorder('barchart_austen')"></div>
+    </div>
+    <div id="gatsby-holder">
+      <div id="gatsby-title">The Great Gatsby</div>
+      <div id="barchart_gatsby" onclick="selectedBorder('barchart_gatsby')"></div>
+>>>>>>> main
     </div>
   </div>
 
     <!-- add features and brushing/linking to the textbox later -->
+<<<<<<< HEAD
   <div class="text-holder" style="display: flex; justify-content: center; padding-top: 10px">
     <textarea id="textbox" rows="15" cols="60"></textarea>
+=======
+  <div class="text-holder"  style="display: flex; justify-content: center; padding-top: 10px">
+    <textarea id="textbox" readonly rows="15" cols="80"></textarea>
+>>>>>>> main
   </div>
   
 
@@ -134,11 +157,19 @@
   <script src="js/visualization.js"></script>
 
   <script>
+<<<<<<< HEAD
     function selectedBackground(barchart, replace) {
       document.getElementById("barchart_alice").classList.remove("alice-bar-selected");
       document.getElementById("barchart_austen").classList.remove("austen-bar-selected");
       document.getElementById("barchart_gatsby").classList.remove("gatsby-bar-selected");
       document.getElementById(barchart).classList.add(replace);
+=======
+    function selectedBorder(barchart) {
+      document.getElementById("barchart_alice").classList.remove("selected");
+      document.getElementById("barchart_austen").classList.remove("selected");
+      document.getElementById("barchart_gatsby").classList.remove("selected");
+      document.getElementById(barchart).classList.add("selected");
+>>>>>>> main
     }
   </script>
 </body>
