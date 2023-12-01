@@ -62,17 +62,15 @@ const passages = [
 
     const top = 5;
 
-    aliceSort = data.sort(function(b, a) {
-        return b.alice - a.alice;
+    function getTopSorted(text, top) {
+      return data.sort(function(b, a) {
+        return b[text] - a[text];
       }).slice(data.length-top, data.length);
+    }
 
-    austenSort = data.sort(function(b, a) {
-        return b.austen - a.austen;
-      }).slice(data.length-top, data.length);
-
-    gatsbySort = data.sort(function(b, a) {
-        return b.gatsby - a.gatsby;
-      }).slice(data.length-top, data.length);
+    let aliceSort = getTopSorted("alice", top);
+    let austenSort = getTopSorted("austen", top);
+    let gatsbySort = getTopSorted("gatsby", top);
 
     // Create a line chart given x and y attributes, labels, offsets;
     // a dispatcher (d3-dispatch) for selection events;
@@ -99,11 +97,13 @@ const passages = [
       (id, sortData);
     }
 
-    let alice_bar = createChart("#barchart_alice", aliceSort);
-  
-    let austen_bar = createChart("#barchart_austen", austenSort);
+    createChart("#barchart_alice", aliceSort);
+    createChart("#barchart_austen", austenSort);
+    createChart("#barchart_gatsby", gatsbySort);
 
-    let gatsby_bar = createChart("#barchart_gatsby", gatsbySort);
+    d3.select("#barchart_alice").on("click", () => replaceChart(0));
+    d3.select("#barchart_austen").on("click", () => replaceChart(1));
+    d3.select("#barchart_gatsby").on("click", () => replaceChart(2));
 
       function replaceChart(data_idx) {
         ids = ["#barchart_alice", "#barchart_austen", "#barchart_gatsby"]
@@ -112,13 +112,10 @@ const passages = [
         for (i = 0; i < ids.length; i++) {
           selection = d3.select(ids[i]);
           selection.selectAll("svg").remove();
-          selection.append(createChart(ids[i], sortedData[data_idx]))
+          createChart(ids[i], sortedData[data_idx]);
+          selection.append();
         }
       }
-
-      d3.select("#barchart_alice").on("click", () => replaceChart(0));
-      d3.select("#barchart_austen").on("click", () => replaceChart(1));
-      d3.select("#barchart_gatsby").on("click", () => replaceChart(2));
   });
 
 })());
