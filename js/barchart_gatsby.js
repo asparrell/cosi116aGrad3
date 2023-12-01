@@ -88,15 +88,29 @@ function barchart_gatsby() {
         .style("visibility", "hidden")
     }
 
+    let barHeight = function() {
+      if (yScale.bandwidth()-30 <= 0) {
+        return yScale.bandwidth()-5;
+      }
+      return yScale.bandwidth()-30;
+    }
+
+    let yScaleHeight = function(d) {
+      if (yScale.bandwidth()-30 <= 0) {
+        return yScale(d.unigram)+3;
+      }
+      return yScale(d.unigram)+16;
+    }
+
     let bars = svg.append("g")
         .attr("fill", "#ffab40")
       .selectAll()
       .data(data)
       .enter().append("rect")
-        .attr("x", (d) => xScale(0) + 1)
-        .attr("y", (d) => yScale(d.unigram)+15)
+        .attr("x", xScale(0)+1)
+        .attr("y", (d) => yScaleHeight(d))
         .attr("width", (d) => xScale(d.gatsby_prob))
-        .attr("height", yScale.bandwidth()-30)
+        .attr("height", barHeight())
       .on("mouseover", mouseover)
       .on("mousemove", mousemove)
       .on("mouseleave", mouseleave)
