@@ -15,8 +15,8 @@ function barchart_alice() {
       yLabelOffsetPx = 0,
       xScale = d3.scaleLinear(),
       yScale = d3.scaleBand(),
-      ourBrush = null,
       selectableElements = d3.select(null),
+      // tooltip = d3.select('.tooltip-area'),
       dispatcher;
   
     // Create the chart by adding an svg to the div with the id 
@@ -59,6 +59,36 @@ function barchart_alice() {
           .attr("transform", "translate(" + yLabelOffsetPx + ", -12)")
           .text(yLabelText);
 
+      let tooltip = d3.select("body")
+        .append("div")
+        .attr("class", "tooltip")
+        
+      let mouseover = function(d) {
+        let prob = d.alice_prob
+        let count = d.alice_count
+
+        tooltip
+          .html("<b>Probability:</b> " + prob + "<br><b>Count:</b> " + count)
+          .style("visibility", "visible")
+      }
+
+      let mousemove = function() {
+        tooltip
+        .style("left", (d3.event.pageX-55) + "px")
+        .style("top", (d3.event.pageY-40) + "px")
+      }
+
+      let mouseleave = function() {
+        tooltip
+          .style("visibility", "hidden")
+      }
+
+      let onClick = function() {
+        tooltip
+          .html('')
+          .style("visibility", "hidden")
+      }
+
       let bars = svg.append("g")
           .attr("fill", "#52b7d8")
         .selectAll()
@@ -66,53 +96,14 @@ function barchart_alice() {
         .enter().append("rect")
           .attr("x", (d) => xScale(0) + 1)
           .attr("y", (d) => yScale(d.unigram)+15)
-          .attr("width", (d) => {console.log(width, xScale(d.alice)); return xScale(d.alice)})
-          .attr("height", yScale.bandwidth()-30);
+          .attr("width", (d) => xScale(d.alice_prob))
+          .attr("height", yScale.bandwidth()-30)
+        .on("mouseover", mouseover)
+        .on("mousemove", mousemove)
+        .on("mouseleave", mouseleave)
+        .on("click", onClick);
           
       selectableElements = bars;
-      
-      // leaving this brush here in case we need it
-      svg.call(brush);
-  
-      // Highlight points when brushed
-      function brush(g) {
-        const brush = d3.brush()
-          .on("start brush", highlight)
-          .on("end", brushEnd)
-          .extent([
-            [-margin.left, -margin.bottom],
-            [width + margin.right, height + margin.top]
-          ]);
-  
-        ourBrush = brush;
-  
-        g.call(brush); // Adds the brush to this element
-  
-        // Highlight the selected circles.
-        function highlight() {
-          if (d3.event.selection === null) return;
-          const [
-            [x0, y0],
-            [x1, y1]
-          ] = d3.event.selection;
-          bars.classed("selected", d =>
-            x0 <= X(d) && X(d) <= x1 && y0 <= Y(d) && Y(d) <= y1
-          );
-  
-          // Get the name of our dispatcher's event
-          let dispatchString = Object.getOwnPropertyNames(dispatcher._)[0];
-  
-          // Let other charts know
-          dispatcher.call(dispatchString, this, svg.selectAll(".selected").data());
-        }
-        
-        function brushEnd() {
-          // We don't want an infinite recursion
-          if (d3.event.sourceEvent.type != "end") {
-            d3.select(this).call(brush.move, null);
-          }
-        }
-      }
   
       return chart;
     }

@@ -55,7 +55,7 @@ const passages = [
 
   // Load the data from a json file (you can make these using
   // JSON.stringify(YOUR_OBJECT), just remove the surrounding "")
-  d3.csv("data/uniprobs_reversed.csv", (data) => {
+  d3.csv("data/dataset.csv", (data) => {
     // General event type for selections, used by d3-dispatch
     // https://github.com/d3/d3-dispatch
     const dispatchString = "selectionUpdated";
@@ -68,9 +68,9 @@ const passages = [
       }).slice(data.length-top, data.length);
     }
 
-    let aliceSort = getTopSorted("alice", top);
-    let austenSort = getTopSorted("austen", top);
-    let gatsbySort = getTopSorted("gatsby", top);
+    let aliceSort = getTopSorted("alice_prob", top);
+    let austenSort = getTopSorted("austen_prob", top);
+    let gatsbySort = getTopSorted("gatsby_prob", top);
 
     // Create a line chart given x and y attributes, labels, offsets;
     // a dispatcher (d3-dispatch) for selection events;
@@ -78,15 +78,15 @@ const passages = [
     function createChart(id, sortData) {
       if (id === "#barchart_alice") {
         obj = barchart_alice();
-        attr = "alice";
+        attr = "alice_prob";
       }
       if (id === "#barchart_austen") {
         obj = barchart_austen();
-        attr = "austen";
+        attr = "austen_prob";
       }
       if (id === "#barchart_gatsby") {
         obj = barchart_gatsby();
-        attr = "gatsby";
+        attr = "gatsby_prob";
       }
       return obj.x(d => d[attr])
       .xLabel("UNIPROB")
@@ -108,7 +108,7 @@ const passages = [
       function replaceChart(data_idx) {
         ids = ["#barchart_alice", "#barchart_austen", "#barchart_gatsby"]
         sortedData = [aliceSort, austenSort, gatsbySort]
-        d3.select("#textbox").property("value", passages[data_idx]);
+        d3.select("#textbox").text(passages[data_idx]);
         for (i = 0; i < ids.length; i++) {
           selection = d3.select(ids[i]);
           selection.selectAll("svg").remove();
