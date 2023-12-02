@@ -82,10 +82,11 @@ function barchart_austen() {
         .style("visibility", "hidden")
     }
 
-    let onClick = function() {
+    let onClick = function(d) {
       tooltip
         .html('')
-        .style("visibility", "hidden")
+        .style("visibility", "hidden");
+      d3.select("#textbox").selectAll("." + d.unigram).style("color", "#e16031");
     }
 
     let barHeight = function() {
