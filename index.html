@@ -47,6 +47,11 @@
     
   </div>
 
+  <select id="d3-dropdown" onchange="loadChart(value)">
+    <option value=5>Top 5</option>
+    <option value=20>Top 20</option>
+  </select>
+
   <!-- <div class -->
   <div class="vis-holder">
     <div id="alice-holder">
@@ -65,7 +70,6 @@
 
     <!-- add features and brushing/linking to the textbox later -->
   <div class="text-holder" id="textbox"></div>
-  
 
   <div class = "content-column">
 
@@ -135,5 +139,12 @@
       document.getElementById(barchart).classList.add("selected");
     }
   </script>
+
+  <script>
+    function loadChart(newTop) {
+      vis(newTop);
+    }
+  </script>
+
 </body>
 </html>
