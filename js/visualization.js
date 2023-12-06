@@ -1,5 +1,3 @@
-// Immediately Invoked Function Expression to limit access to our 
-// variables and prevent 
 // Define the passages
 const passages = [
   `<p><mark class="alice">Alice</mark> <mark class="was">was</mark> <mark class="beginning">beginning</mark> 
@@ -63,18 +61,16 @@ sitting</mark> <mark class="by">by</mark> <mark class="her">her</mark> <mark cla
   </mark> <mark class="fundamental">fundamental</mark> <mark class="decencies">decencies</mark> <mark class="is">is</mark> <mark class="parcelled">parcelled</mark> <mark class="out">out</mark> <mark class="unequally">unequally</mark> <mark class="at">at</mark> <mark class="birth">birth</mark>.</p>`
 ];
 
-// Immediately Invoked Function Expression to limit access to our
-// variables and prevent race conditions
-((() => {
+let selected;
 
-  // Load the data from a json file (you can make these using
-  // JSON.stringify(YOUR_OBJECT), just remove the surrounding "")
+const vis = (newTop = 5) => {
+
   d3.csv("data/dataset.csv", (data) => {
     // General event type for selections, used by d3-dispatch
     // https://github.com/d3/d3-dispatch
     const dispatchString = "selectionUpdated";
 
-    const top = 5;
+    let top = newTop;
 
     function getTopSorted(text, top) {
       return data.sort(function(b, a) {
@@ -86,9 +82,12 @@ sitting</mark> <mark class="by">by</mark> <mark class="her">her</mark> <mark cla
     let austenSort = getTopSorted("austen_prob", top);
     let gatsbySort = getTopSorted("gatsby_prob", top);
 
-    // Create a line chart given x and y attributes, labels, offsets;
-    // a dispatcher (d3-dispatch) for selection events;
-    // a div id selector to put our svg in; and the data to use.
+    if (selected != null) {
+      deleteChartsKeepSelection(selected);
+    } else {
+      deleteCharts();
+    }
+
     function createChart(id, sortData) {
       if (id === "#barchart_alice") {
         obj = barchart_alice();
@@ -115,9 +114,9 @@ sitting</mark> <mark class="by">by</mark> <mark class="her">her</mark> <mark cla
     createChart("#barchart_austen", austenSort);
     createChart("#barchart_gatsby", gatsbySort);
 
-    d3.select("#barchart_alice").on("click", () => replaceChart(0));
-    d3.select("#barchart_austen").on("click", () => replaceChart(1));
-    d3.select("#barchart_gatsby").on("click", () => replaceChart(2));
+    d3.select("#barchart_alice").on("click", () => {selected = 0; replaceChart(0)});
+    d3.select("#barchart_austen").on("click", () => {selected = 1; replaceChart(1)});
+    d3.select("#barchart_gatsby").on("click", () => {selected = 2; replaceChart(2)});
 
       function replaceChart(data_idx) {
         ids = ["#barchart_alice", "#barchart_austen", "#barchart_gatsby"];
@@ -133,6 +132,32 @@ sitting</mark> <mark class="by">by</mark> <mark class="her">her</mark> <mark cla
           createChart(ids[i], sortedData[data_idx]);
         }
       }
+
+      function deleteChartsKeepSelection(data_idx) {
+        ids = ["#barchart_alice", "#barchart_austen", "#barchart_gatsby"];
+        sortedData = [aliceSort, austenSort, gatsbySort];
+        d3.select("#textbox").html(passages[data_idx]);
+        colors = ["#52b7d8", "#e16031", "#ffab40"];
+        for (i = 0; i < sortedData[data_idx].length; i++) {
+          d3.select("#textbox").selectAll("." + sortedData[data_idx][i].unigram).style("color", colors[data_idx]);
+        }
+        for (i = 0; i < ids.length; i++) {
+          selection = d3.select(ids[i]);
+          selection.selectAll("svg").remove();
+        }
+      }
+
+      function deleteCharts() {
+        ids = ["#barchart_alice", "#barchart_austen", "#barchart_gatsby"];
+        sortedData = [aliceSort, austenSort, gatsbySort];
+        colors = ["#52b7d8", "#e16031", "#ffab40"];
+        for (i = 0; i < ids.length; i++) {
+          selection = d3.select(ids[i]);
+          selection.selectAll("svg").remove();
+        }
+      }
   });
 
-})());
+};
+
+vis();
