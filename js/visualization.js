@@ -132,6 +132,48 @@ const vis = (newTop = 5) => {
           createChart(ids[i], sortedData[data_idx]);
         }
       }
+      function getSelectedText() {
+        if (window.getSelection) {
+          return window.getSelection().toString();
+        } else if (document.selection && document.selection.type != "Control") {
+          return document.selection.createRange().text;
+        }
+        return '';
+      }
+  
+      // Function to update charts based on selected text
+      function updateChartsWithSelectedText() {
+        const selectedText = getSelectedText();
+        if (!selectedText.trim().length) {
+         
+          return;
+        }
+        const selectedWords = selectedText.toLowerCase().split(/[\s,.;:!?]+/).filter(Boolean);
+  
+        updateChartForSelectedWords("#barchart_alice",  selectedWords);
+        updateChartForSelectedWords("#barchart_austen", selectedWords);
+        updateChartForSelectedWords("#barchart_gatsby", selectedWords);
+      }
+  
+      function updateChartForSelectedWords(chartId,  selectedWords) {
+        let filteredData
+        if (chartId==="#barchart_alice"){
+        filteredData = getTopSorted("alice_prob",data.length).filter(d => selectedWords.includes(d.unigram)).slice(0,top);
+      }else if (chartId==="#barchart_austen"){
+        filteredData = getTopSorted("austen_prob",data.length).filter(d => selectedWords.includes(d.unigram)).slice(0,top);
+      }else  {
+        filteredData = getTopSorted("gatsby_prob",data.length).filter(d => selectedWords.includes(d.unigram)).slice(0,top);
+      }
+        console.log(filteredData)
+        d3.select(chartId).selectAll("svg").remove();
+        createChart(chartId, filteredData);
+      }
+  
+      // Attach event listener to the textbox for text selection
+      document.getElementById('textbox').addEventListener('mouseup', () => {
+        setTimeout(updateChartsWithSelectedText, 10);
+      });
+
 
       function deleteChartsKeepSelection(data_idx) {
         ids = ["#barchart_alice", "#barchart_austen", "#barchart_gatsby"];
@@ -157,6 +199,47 @@ const vis = (newTop = 5) => {
         }
       }
   });
+  function getSelectedText() {
+        if (window.getSelection) {
+          return window.getSelection().toString();
+        } else if (document.selection && document.selection.type != "Control") {
+          return document.selection.createRange().text;
+        }
+        return '';
+      }
+  
+      // Function to update charts based on selected text
+      function updateChartsWithSelectedText() {
+        const selectedText = getSelectedText();
+        if (!selectedText.trim().length) {
+         
+          return;
+        }
+        const selectedWords = selectedText.toLowerCase().split(/[\s,.;:!?]+/).filter(Boolean);
+  
+        updateChartForSelectedWords("#barchart_alice",  selectedWords);
+        updateChartForSelectedWords("#barchart_austen", selectedWords);
+        updateChartForSelectedWords("#barchart_gatsby", selectedWords);
+      }
+  
+      function updateChartForSelectedWords(chartId,  selectedWords) {
+        let filteredData
+        if (chartId==="#barchart_alice"){
+        filteredData = getTopSorted("alice_prob",data.length).filter(d => selectedWords.includes(d.unigram)).slice(0,20);
+      }else if (chartId==="#barchart_austen"){
+        filteredData = getTopSorted("austen_prob",data.length).filter(d => selectedWords.includes(d.unigram)).slice(0,20);
+      }else  {
+        filteredData = getTopSorted("gatsby_prob",data.length).filter(d => selectedWords.includes(d.unigram)).slice(0,20);
+      }
+        console.log(filteredData)
+        d3.select(chartId).selectAll("svg").remove();
+        createChart(chartId, filteredData);
+      }
+  
+      // Attach event listener to the textbox for text selection
+      document.getElementById('textbox').addEventListener('mouseup', () => {
+        setTimeout(updateChartsWithSelectedText, 10);
+      });
 
 };
 
