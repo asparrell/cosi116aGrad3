@@ -69,24 +69,24 @@ mark {
 
 #barchart_alice {
 	border-style: solid;
-	/* border-width: 2px 1px 2px 2px; */
-	border-width: 2px;
+	border-width: 2px 1px 2px 2px;
+	/*border-width: 2px;*/
 	border-color: #808080;
 	user-select: none;
 }
 
 #barchart_austen {
 	border-style: solid;
-	/* border-width: 2px 1px 2px 1px; */
-	border-width: 2px;
+	border-width: 2px 1px 2px 1px;
+	/*border-width: 2px;*/
 	border-color: #808080;
 	user-select: none;
 }
 
 #barchart_gatsby {
 	border-style: solid;
-	/* border-width: 2px 2px 2px 1px; */
-	border-width: 2px;
+	border-width: 2px 2px 2px 1px;
+	/*border-width: 2px;*/
 	border-color: #808080;
 	user-select: none;
 }
