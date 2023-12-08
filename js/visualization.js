@@ -1,6 +1,5 @@
 // Define the passages
-const passages = [
-  `<p><mark class="alice">Alice</mark> <mark class="was">was</mark> <mark class="beginning">beginning</mark> 
+const passages = [`<p><mark class="alice">Alice</mark> <mark class="was">was</mark> <mark class="beginning">beginning</mark> 
 <mark class="to">to</mark> <mark class="get">get</mark> <mark class="very">very</mark> <mark class="tired">tired</mark> <mark class="of">of</mark> <mark class="sitting">
 sitting</mark> <mark class="by">by</mark> <mark class="her">her</mark> <mark class="sister">sister</mark> <mark class="on">on</mark> <mark class="the">the</mark> 
 <mark class="bank">bank</mark>, <mark class="and">and</mark> <mark class="of">of</mark> <mark class="having">having</mark> <mark class="nothing">nothing</mark> <mark class="to">to</mark> 
@@ -34,9 +33,7 @@ sitting</mark> <mark class="by">by</mark> <mark class="her">her</mark> <mark cla
   <mark class="curiosity">curiosity</mark>, <mark class="she">she</mark> <mark class="ran">ran</mark> <mark class="across">across</mark> <mark class="the">the</mark> <mark class="field">field</mark> <mark class="after">after</mark> 
   <mark class="it">it</mark>, <mark class="and">and</mark> <mark class="fortunately">fortunately</mark> <mark class="was">was</mark> <mark class="just">
   just</mark> <mark class="in">in</mark> <mark class="time">time</mark> <mark class="to">to</mark> <mark class="see">see</mark> <mark class="it">it</mark> <mark class="pop">pop</mark> <mark class="down">down</mark> 
-  <mark class="a">a</mark> <mark class="large">large</mark> <mark class="rabbit">rabbit</mark>-<mark class="hole">hole</mark> <mark class="under">under</mark> <mark class="the">the</mark> <mark class="hedge">hedge</mark>.</p>`
-  ,
-  `<p><mark class="it">It</mark> <mark class="is">is</mark> <mark class="a">a</mark> <mark class="truth">truth</mark> <mark class="universally">universally</mark> <mark class="acknowledged">acknowledged</mark>, <mark class="that">that</mark> <mark class="a">a</mark> <mark class="single">single</mark> <mark class="man">man</mark> <mark class="in">in</mark> <mark class="possession">possession</mark> <mark class="of">of</mark> <mark class="a">a</mark> <mark class="good">good</mark> <mark class="fortune">fortune</mark> <mark class="must">must</mark> <mark class="be">be</mark> <mark class="in">in</mark> <mark class="want">want</mark> <mark class="of">of</mark> <mark class="a">a</mark> <mark class="wife">wife</mark>.
+  <mark class="a">a</mark> <mark class="large">large</mark> <mark class="rabbit">rabbit</mark>-<mark class="hole">hole</mark> <mark class="under">under</mark> <mark class="the">the</mark> <mark class="hedge">hedge</mark>.</p>`, `<p><mark class="it">It</mark> <mark class="is">is</mark> <mark class="a">a</mark> <mark class="truth">truth</mark> <mark class="universally">universally</mark> <mark class="acknowledged">acknowledged</mark>, <mark class="that">that</mark> <mark class="a">a</mark> <mark class="single">single</mark> <mark class="man">man</mark> <mark class="in">in</mark> <mark class="possession">possession</mark> <mark class="of">of</mark> <mark class="a">a</mark> <mark class="good">good</mark> <mark class="fortune">fortune</mark> <mark class="must">must</mark> <mark class="be">be</mark> <mark class="in">in</mark> <mark class="want">want</mark> <mark class="of">of</mark> <mark class="a">a</mark> <mark class="wife">wife</mark>.
   </p><p><mark class="however">However</mark> <mark class="little">little</mark> <mark class="known">known</mark> <mark class="the">the</mark> <mark class="feelings">feelings</mark> <mark class="or">or</mark> <mark class="views">views</mark> <mark class="of">of</mark> <mark class="such">such</mark> <mark class="a">a</mark> <mark class="man">man</mark> <mark class="may">may</mark> <mark class="be">be</mark> <mark class="on">on</mark> <mark class="his">his</mark> <mark class="first">first</mark> <mark class="entering">entering</mark> <mark class="a">a</mark> <mark class="neighbourhood">neighbourhood</mark>, <mark class="this">this</mark> <mark class="truth">truth</mark> <mark class="is">is</mark> <mark class="so">so</mark> <mark class="well">well</mark> <mark class="fixed">
   fixed</mark> <mark class="in">in</mark> <mark class="the">the</mark> <mark class="minds">minds</mark> <mark class="of">of</mark> <mark class="the">the</mark> <mark class="surrounding">surrounding</mark> <mark class="families">families</mark>, <mark class="that">that</mark> <mark class="he">he</mark> <mark class="is">is</mark> <mark class="considered">considered</mark> <mark class="as">as</mark> <mark class="the">the</mark> <mark class="rightful">rightful</mark> <mark class="property">property</mark> <mark class="of">of</mark> <mark class="some">some</mark> <mark class="one">one</mark> <mark class="or">or</mark> <mark class="other">other</mark> <mark class="of">of</mark> <mark class="their">their</mark> <mark class="daughters">daughters</mark>.
   </p><p>“<mark class="my">My</mark> <mark class="dear">dear</mark> <mark class="mr">Mr.</mark> <mark class="bennet">Bennet</mark>,” <mark class="said">said</mark> <mark class="his">his</mark> <mark class="lady">lady</mark> <mark class="to">to</mark> <mark class="him">him</mark> <mark class="one">one</mark> <mark class="day">day</mark>, “<mark class="have">have</mark> <mark class=you>you</mark> <mark class="heard">heard</mark> <mark class="that">that</mark> <mark class="netherfield">Netherfield</mark> <mark class="park">Park</mark> <mark class="is">is</mark> <mark class="let">let</mark> <mark class="at">at</mark> <mark class="last">last</mark>?”
@@ -44,9 +41,7 @@ sitting</mark> <mark class="by">by</mark> <mark class="her">her</mark> <mark cla
   </p><p>“<mark class="but">But</mark> <mark class="it">it</mark> <mark class="is">is</mark>,” <mark class="returned">returned</mark> <mark class="she">she</mark>; “<mark class="for">for</mark> <mark class="mrs">Mrs.</mark> <mark class="long">Long</mark> <mark class="has">has</mark> <mark class="just">just</mark> <mark class="been">been</mark> <mark class="here">here</mark>, <mark class="and">and</mark> <mark class="she">she</mark> <mark class="told">told</mark> <mark class="me">me</mark> <mark class="all">all</mark> <mark class="about">about</mark> <mark class="it">it</mark>.”
   </p><p><mark class="mr">Mr.</mark> <mark class="bennet">Bennet</mark> <mark class="made">made</mark> <mark class="no">no</mark> <mark class="answer">answer</mark>.
   </p><p>“<mark class="do">Do</mark> <mark class="not">not</mark> <mark class="you">you</mark> <mark class="want">want</mark> <mark class="to">to</mark> <mark class="know">know</mark> <mark class="who">who</mark> <mark class="has">has</mark> <mark class="taken">taken</mark> <mark class="it">it</mark>?” <mark class="cried">cried</mark> <mark class="his">his</mark> <mark class="wife">wife</mark>, <mark class="impatiently">impatiently</mark>.
-  </p><p>“<mark class="you">You</mark> <mark class="want">want</mark> <mark class="to">to</mark> <mark class="tell">tell</mark> <mark class="me">me</mark>, <mark class="and">and</mark> <mark class="i">I</mark> <mark class="have">have</mark> <mark class="no">no</mark> <mark class="objection">objection</mark> <mark class="to">to</mark> <mark class="hearing">hearing</mark> <mark class="it">it</mark>.”</p>`
-  ,
-  `<p><mark class="in">In</mark> <mark class="my">my</mark> <mark class="younger">younger</mark> <mark class="and">and</mark> <mark class="more">more</mark> <mark class="vulnerable">vulnerable</mark> <mark class="years">years</mark> <mark class="my">my</mark> <mark class="father">father</mark> <mark class="gave">gave</mark> <mark class="me">me</mark> <mark class="some">some</mark> <mark class="advice">advice</mark> <mark class="that">that</mark> <mark class="i've">I’ve</mark> <mark class="been">been</mark> <mark class="turning">turning</mark> <mark class="over">over</mark> <mark class="in">in</mark> <mark class="my">my</mark> <mark class="mind">mind</mark> <mark class="ever">ever</mark> <mark class="since">since</mark>.
+  </p><p>“<mark class="you">You</mark> <mark class="want">want</mark> <mark class="to">to</mark> <mark class="tell">tell</mark> <mark class="me">me</mark>, <mark class="and">and</mark> <mark class="i">I</mark> <mark class="have">have</mark> <mark class="no">no</mark> <mark class="objection">objection</mark> <mark class="to">to</mark> <mark class="hearing">hearing</mark> <mark class="it">it</mark>.”</p>`, `<p><mark class="in">In</mark> <mark class="my">my</mark> <mark class="younger">younger</mark> <mark class="and">and</mark> <mark class="more">more</mark> <mark class="vulnerable">vulnerable</mark> <mark class="years">years</mark> <mark class="my">my</mark> <mark class="father">father</mark> <mark class="gave">gave</mark> <mark class="me">me</mark> <mark class="some">some</mark> <mark class="advice">advice</mark> <mark class="that">that</mark> <mark class="i've">I’ve</mark> <mark class="been">been</mark> <mark class="turning">turning</mark> <mark class="over">over</mark> <mark class="in">in</mark> <mark class="my">my</mark> <mark class="mind">mind</mark> <mark class="ever">ever</mark> <mark class="since">since</mark>.
   “<mark class="whenever">Whenever</mark> <mark class="you">you</mark> <mark class="feel">feel</mark> <mark class="like">like</mark> <mark class="criticizing">criticizing</mark> <mark class="anyone">anyone</mark>,” <mark class="he">he</mark> <mark class="told">told</mark> <mark class="me">me</mark>, “<mark class="just">just</mark> <mark class="remember">remember</mark> <mark class="that">that</mark> <mark class="all">all</mark> <mark class="the">the</mark> <mark class="people">people</mark> <mark class="in">in</mark> <mark class="this">this</mark> <mark class="world">world</mark> <mark class="haven't">haven’t</mark> <mark class="had">had</mark> <mark class="the">the</mark> <mark class="advantages">
   advantages</mark> <mark class="that">that</mark> <mark class="you've">you’ve</mark> <mark class="had">had</mark>.”</p>
   <p><mark class="he">He</mark> <mark class="didn't">didn’t</mark> <mark class="say">say</mark> <mark class="any">any</mark> <mark class="more">more</mark>, <mark class="but">but</mark> <mark class="we've">we’ve</mark> <mark class="always">always</mark> <mark class="been">been</mark> <mark class="unusually">unusually</mark> <mark class="communicative">communicative</mark> <mark class="in">in</mark> <mark class="a">a</mark> <mark class="reserved">reserved</mark> <mark class="way">way</mark>, <mark class="and">and</mark> <mark class="i">I</mark> <mark class="understood">understood</mark> <mark class="that">that
@@ -58,154 +53,150 @@ sitting</mark> <mark class="by">by</mark> <mark class="her">her</mark> <mark cla
   intimate</mark> <mark class="revelation">revelation</mark> <mark class="was">was</mark> <mark class="quivering">quivering</mark> <mark class="on">on</mark> <mark class="the">the</mark> <mark class="horizon">horizon</mark>; <mark class="for">for</mark> <mark class="the">the</mark> <mark class="intimate">intimate</mark> <mark class="revelations">revelations</mark> <mark class="of">of</mark> <mark class="young">young</mark> <mark class="men">men</mark>, <mark class="or">or</mark> <mark class="at">at</mark> <mark class="least">least</mark> <mark class="the">the</mark> <mark class="terms">terms</mark> <mark class="in">in</mark> <mark class="which">which</mark> <mark class="they">they</mark> <mark class="express">express
   </mark> <mark class="them">them</mark>, <mark class="are">are</mark> <mark class="usually">usually</mark> <mark class="plagiaristic">plagiaristic</mark> <mark class="and">and</mark> <mark class="marred">marred</mark> <mark class="by">by</mark> <mark class="obvious">obvious</mark> <mark class="suppressions">suppressions</mark>. <mark class="reserving">Reserving</mark> <mark class="judgements">judgements</mark> <mark class="is">is</mark> <mark class="a">a</mark> <mark class="matter">matter</mark> <mark class="of">of</mark> <mark class="infinite">infinite</mark> <mark class="hope">hope</mark>. <mark class="i">I</mark> <mark class="am">am</mark> <mark class="still">still</mark> <mark class="a">a 
   </mark> <mark class="little">little</mark> <mark class="afraid">afraid</mark> <mark class="of">of</mark> <mark class="missing">missing</mark> <mark class="something">something</mark> <mark class="if">if</mark> <mark class="i">I</mark> <mark class="forget">forget</mark> <mark class="that">that</mark>, <mark class="as">as</mark> <mark class="my">my</mark> <mark class="father">father</mark> <mark class="snobbishly">snobbishly</mark> <mark class="suggested">suggested</mark>, <mark class="and">and</mark> <mark class="i">I</mark> <mark class="snobbishly">snobbishly</mark> <mark class="repeat">repeat</mark>, <mark class="a">a</mark> <mark class="sense">sense</mark> <mark class="of">of</mark> <mark class="the">the 
-  </mark> <mark class="fundamental">fundamental</mark> <mark class="decencies">decencies</mark> <mark class="is">is</mark> <mark class="parcelled">parcelled</mark> <mark class="out">out</mark> <mark class="unequally">unequally</mark> <mark class="at">at</mark> <mark class="birth">birth</mark>.</p>`
-];
+  </mark> <mark class="fundamental">fundamental</mark> <mark class="decencies">decencies</mark> <mark class="is">is</mark> <mark class="parcelled">parcelled</mark> <mark class="out">out</mark> <mark class="unequally">unequally</mark> <mark class="at">at</mark> <mark class="birth">birth</mark>.</p>`];
 
 let selected;
 
 const vis = (newTop = 5) => {
 
-  d3.csv("data/dataset.csv", (data) => {
-    // General event type for selections, used by d3-dispatch
-    // https://github.com/d3/d3-dispatch
-    const dispatchString = "selectionUpdated";
+    d3.csv("data/dataset.csv", (data) => {
+        // General event type for selections, used by d3-dispatch
+        // https://github.com/d3/d3-dispatch
+        const dispatchString = "selectionUpdated";
 
-    let top = newTop;
-    const colors = ["#52b7d8", "#e16031", "#ffab40"];
+        let top = newTop;
+        const colors = ["#52b7d8", "#e16031", "#ffab40"];
+        const ids = ["#barchart_alice", "#barchart_austen", "#barchart_gatsby"];
 
-    function getTopSorted(text, top) {
-      return data.sort(function(b, a) {
-        return b[text] - a[text];
-      }).slice(data.length-top, data.length);
-    }
-
-    let aliceSort = getTopSorted("alice_prob", top);
-    let austenSort = getTopSorted("austen_prob", top);
-    let gatsbySort = getTopSorted("gatsby_prob", top);
-    let sortedData = [aliceSort, austenSort, gatsbySort];
-
-    if (selected != null) {
-      deleteChartsKeepSelection(selected);
-    } else {
-      deleteCharts();
-    }
-
-    function createChart(id, sortData) {
-      if (id === "#barchart_alice") {
-        obj = barchart_alice();
-        attr = "alice_prob";
-      }
-      if (id === "#barchart_austen") {
-        obj = barchart_austen();
-        attr = "austen_prob";
-      }
-      if (id === "#barchart_gatsby") {
-        obj = barchart_gatsby();
-        attr = "gatsby_prob";
-      }
-      return obj.x(d => d[attr])
-      .xLabel("UNIPROB")
-      .y(d => d.unigram)
-      .yLabel("UNIGRAM")
-      .yLabelOffset(40)
-      .selectionDispatcher(d3.dispatch(dispatchString))
-      (id, sortData);
-    }
-
-    createChart("#barchart_alice", aliceSort);
-    createChart("#barchart_austen", austenSort);
-    createChart("#barchart_gatsby", gatsbySort);
-
-    d3.select("#barchart_alice").on("click", () => {selected = 0; replaceChart(0)});
-    d3.select("#barchart_austen").on("click", () => {selected = 1; replaceChart(1)});
-    d3.select("#barchart_gatsby").on("click", () => {selected = 2; replaceChart(2)});
-
-
-
-      function replaceChart(data_idx) {
-        ids = ["#barchart_alice", "#barchart_austen", "#barchart_gatsby"];
-        //here
-        d3.select("#textbox").html(passages[data_idx]);
-        for (i = 0; i < sortedData[data_idx].length; i++) {
-          d3.select("#textbox").selectAll("." + sortedData[data_idx][i].unigram).style("color", colors[data_idx]);
+        function getTopSorted(text, top) {
+            return data.sort(function (b, a) {
+                return b[text] - a[text];
+            }).slice(data.length - top, data.length);
         }
-        for (i = 0; i < ids.length; i++) {
-          selection = d3.select(ids[i]);
-          selection.selectAll("svg").remove();
-          createChart(ids[i], sortedData[data_idx]);
+
+        let aliceSort = getTopSorted("alice_prob", top);
+        let austenSort = getTopSorted("austen_prob", top);
+        let gatsbySort = getTopSorted("gatsby_prob", top);
+        let sortedData = [aliceSort, austenSort, gatsbySort];
+
+        if (selected != null) {
+            deleteChartsKeepSelection(selected);
+        } else {
+            deleteCharts();
         }
-      }
 
-      function deleteChartsKeepSelection(data_idx) {
-        ids = ["#barchart_alice", "#barchart_austen", "#barchart_gatsby"];
-        //sortedData = [aliceSort, austenSort, gatsbySort];
-        d3.select("#textbox").html(passages[data_idx]);
-        for (i = 0; i < sortedData[data_idx].length; i++) {
-          d3.select("#textbox").selectAll("." + sortedData[data_idx][i].unigram).style("color", colors[data_idx]);
+        function createChart(id, sortData) {
+            if (id === "#barchart_alice") {
+                obj = barchart_alice();
+                attr = "alice_prob";
+            }
+            if (id === "#barchart_austen") {
+                obj = barchart_austen();
+                attr = "austen_prob";
+            }
+            if (id === "#barchart_gatsby") {
+                obj = barchart_gatsby();
+                attr = "gatsby_prob";
+            }
+            return obj.x(d => d[attr])
+                .xLabel("UNIPROB")
+                .y(d => d.unigram)
+                .yLabel("UNIGRAM")
+                .yLabelOffset(40)
+                .selectionDispatcher(d3.dispatch(dispatchString))(id, sortData);
         }
-        for (i = 0; i < ids.length; i++) {
-          selection = d3.select(ids[i]);
-          selection.selectAll("svg").remove();
+
+        createChart("#barchart_alice", aliceSort);
+        createChart("#barchart_austen", austenSort);
+        createChart("#barchart_gatsby", gatsbySort);
+
+        d3.select("#barchart_alice").on("click", () => {
+            selected = 0;
+            replaceChart(0)
+        });
+        d3.select("#barchart_austen").on("click", () => {
+            selected = 1;
+            replaceChart(1)
+        });
+        d3.select("#barchart_gatsby").on("click", () => {
+            selected = 2;
+            replaceChart(2)
+        });
+
+
+        function replaceChart(data_idx) {
+            deleteChartsKeepSelection(data_idx)
+            for (let i = 0; i < ids.length; i++) {
+                createChart(ids[i], sortedData[data_idx]);
+            }
         }
-      }
 
-      function deleteCharts() {
-        ids = ["#barchart_alice", "#barchart_austen", "#barchart_gatsby"];
-        for (i = 0; i < ids.length; i++) {
-          selection = d3.select(ids[i]);
-          selection.selectAll("svg").remove();
+        function deleteChartsKeepSelection(data_idx) {
+            d3.select("#textbox").html(passages[data_idx]);
+            for (let i = 0; i < sortedData[data_idx].length; i++) {
+                d3.select("#textbox").selectAll("." + sortedData[data_idx][i].unigram).style("color", colors[data_idx]);
+            }
+            deleteCharts();
         }
-      }
 
-      function getSelectedText() {
-      if (window.getSelection) {
-        d3.select("#textbox").selectAll("p").selectAll("mark").style("color", "black")
-        let words = window.getSelection().getRangeAt(0);
-        expandToWord(words);
-        return words.toString();
-      } else if (document.selection && document.selection.type != "Control") {
-        return document.selection.createRange().text;
-      }
-      return '';
-    }
-
-    function expandToWord(range) {
-    if (range.collapsed) {
-        return;
-    } while (range.startOffset > 0 && range.toString()[0].match(/\w/)) {
-        range.setStart(range.startContainer, range.startOffset - 1);
-    } while (range.endOffset < range.endContainer.length && range.toString()[range.toString().length - 1].match(/\w/)) {
-        range.setEnd(range.endContainer, range.endOffset + 1);
-    }
-}
-
-    // Function to update charts based on selected text
-    function updateChartsWithSelectedText() {
-      const selectedText = getSelectedText();
-      if (!selectedText.trim().length) {
-        return;
-      }
-      const selectedWords = selectedText.toLowerCase().split(/[\s,.—“”)\-;:!(?]+/).filter(Boolean);
-      for (i = 0; i < selectedWords.length; i++) {
-          d3.select("#textbox").selectAll("." + selectedWords[i]).style("color", colors[selected]);
+        function deleteCharts() {
+            for (let i = 0; i < ids.length; i++) {
+                let selection = d3.select(ids[i]);
+                selection.selectAll("svg").remove();
+            }
         }
-      updateChartForSelectedWords("#barchart_alice",  selectedWords);
-      updateChartForSelectedWords("#barchart_austen", selectedWords);
-      updateChartForSelectedWords("#barchart_gatsby", selectedWords);
-    }
 
-    function updateChartForSelectedWords(chartId,  selectedWords) {
-        let text_order = ["alice_prob", "austen_prob", "gatsby_prob"]
-      let filteredData = getTopSorted(text_order[selected], data.length).filter(d => selectedWords.includes(d.unigram)).slice(0,20);
-      d3.select(chartId).selectAll("svg").remove();
-      createChart(chartId, filteredData);
-    }
+        function getSelectedText() {
+            if (window.getSelection) {
+                d3.select("#textbox").selectAll("p").selectAll("mark").style("color", "black")
+                let words = window.getSelection().getRangeAt(0);
+                expandToWord(words);
+                return words.toString();
+            } else if (document.selection && document.selection.type != "Control") {
+                return document.selection.createRange().text;
+            }
+            return '';
+        }
 
-    // Attach event listener to the textbox for text selection
-    document.getElementById('textbox').addEventListener('mouseup', () => {
-      setTimeout(updateChartsWithSelectedText, 10);
+        function expandToWord(range) {
+            if (range.collapsed) {
+                return;
+            }
+            while (range.startOffset > 0 && range.toString()[0].match(/\w/)) {
+                range.setStart(range.startContainer, range.startOffset - 1);
+            }
+            while (range.endOffset < range.endContainer.length && range.toString()[range.toString().length - 1].match(/\w/)) {
+                range.setEnd(range.endContainer, range.endOffset + 1);
+            }
+        }
+
+        // Function to update charts based on selected text
+        function updateChartsWithSelectedText() {
+            const selectedText = getSelectedText();
+            if (!selectedText.trim().length) {
+                return;
+            }
+            const selectedWords = selectedText.toLowerCase().split(/[\s,.—“”)\-;:!(?]+/).filter(Boolean);
+            for (let i = 0; i < selectedWords.length; i++) {
+                d3.select("#textbox").selectAll("." + selectedWords[i]).style("color", colors[selected]);
+            }
+            for (let i = 0; i < ids.length; i++) {
+                  updateChartForSelectedWords(ids[i], selectedWords);
+              }
+        }
+
+        function updateChartForSelectedWords(chartId, selectedWords) {
+            let text_order = ["alice_prob", "austen_prob", "gatsby_prob"]
+            let filteredData = getTopSorted(text_order[selected], data.length).filter(d => selectedWords.includes(d.unigram)).slice(0, 20);
+            d3.select(chartId).selectAll("svg").remove();
+            createChart(chartId, filteredData);
+        }
+
+        // Attach event listener to the textbox for text selection
+        document.getElementById('textbox').addEventListener('mouseup', () => {
+            setTimeout(updateChartsWithSelectedText, 10);
+        });
     });
-  });
 
 };
 
