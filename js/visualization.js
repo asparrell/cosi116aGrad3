@@ -11,6 +11,7 @@ const vis = (newTop = 5) => {
         const colors = ["#52b7d8", "#e16031", "#ffab40"];
         const ids = ["#barchart_alice", "#barchart_austen", "#barchart_gatsby"];
 
+        // Get the top n bars for the selected n, sorted by the given text.
         function getTopSorted(text, top) {
             return data.sort(function (b, a) {
                 return b[text] - a[text];
@@ -28,6 +29,7 @@ const vis = (newTop = 5) => {
             deleteCharts();
         }
 
+        // create charts based on a given text and the sorted, sliced data obtained from getTopSorted.
         function createChart(id, sortData) {
             if (id === "#barchart_alice") {
                 obj = barchart_alice();
@@ -53,6 +55,7 @@ const vis = (newTop = 5) => {
         createChart("#barchart_austen", austenSort);
         createChart("#barchart_gatsby", gatsbySort);
 
+        // obtain user selection of a chart
         d3.select("#barchart_alice").on("click", () => {
             selected = 0;
             replaceChart(0)
@@ -66,7 +69,7 @@ const vis = (newTop = 5) => {
             replaceChart(2)
         });
 
-
+        // replace the charts with the selected chart ordering (implementation of reordering bars)
         function replaceChart(data_idx) {
             deleteChartsKeepSelection(data_idx)
             for (let i = 0; i < ids.length; i++) {
@@ -82,6 +85,7 @@ const vis = (newTop = 5) => {
             deleteCharts();
         }
 
+        // remove the old charts to replace with new ones
         function deleteCharts() {
             for (let i = 0; i < ids.length; i++) {
                 let selection = d3.select(ids[i]);
@@ -89,6 +93,7 @@ const vis = (newTop = 5) => {
             }
         }
 
+        // brushing and linking from text to bars
         function getSelectedText() {
             if (window.getSelection) {
                 d3.select("#textbox").selectAll("p").selectAll("mark").style("color", "black")
@@ -101,6 +106,7 @@ const vis = (newTop = 5) => {
             return '';
         }
 
+        // Make selection only select whole words, credit to Stack Overflow (in acknowledgements)
         function expandToWord(range) {
             if (range.collapsed) {
                 return;
