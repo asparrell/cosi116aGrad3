@@ -54,12 +54,15 @@
     
   </div>
 
-  <select id="d3-dropdown" onchange="loadChart(value)">
-      <option value=5>Top 5</option>
-      <option value=20>Top 20</option>
-  </select>
+  <!-- dropdown holder -->
+  <div class="dropdown-holder">
+    Ranking: <select id="d3-dropdown" onchange="loadChart(value)">
+        <option value=5>Top 5</option>
+        <option value=20>Top 20</option>
+    </select>
+  </div>
 
-  <!-- <div class -->
+  <!-- visualization holder -->
   <div class="vis-holder">
     <div id="alice-holder">
       <div id="alice-title">Alice in Wonderland</div>
@@ -75,6 +78,7 @@
     </div>
   </div>
 
+  <!-- textbox holder -->
   <div class="text-holder" id="textbox"></div>
 
   <div class = "content-column">
@@ -199,6 +203,7 @@
   <script src="js/visualization.js"></script>
 
   <script>
+    // change selected barchart which determines which one has the highlighted border
     function selectedBorder(barchart) {
       document.getElementById("barchart_alice").classList.remove("selected");
       document.getElementById("barchart_austen").classList.remove("selected");
@@ -206,6 +211,7 @@
       document.getElementById(barchart).classList.add("selected");
     }
 
+    // reload charts
     function loadChart(newTop) {
       vis(newTop);
     }
