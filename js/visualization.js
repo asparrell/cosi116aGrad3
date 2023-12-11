@@ -58,20 +58,20 @@ const vis = (newTop = 5) => {
         // obtain user selection of a chart
         d3.select("#barchart_alice").on("click", () => {
             selected = 0;
-            replaceChart(0)
+            replaceChart(0);
         });
         d3.select("#barchart_austen").on("click", () => {
             selected = 1;
-            replaceChart(1)
+            replaceChart(1);
         });
         d3.select("#barchart_gatsby").on("click", () => {
             selected = 2;
-            replaceChart(2)
+            replaceChart(2);
         });
 
         // replace the charts with the selected chart ordering (implementation of reordering bars)
         function replaceChart(data_idx) {
-            deleteChartsKeepSelection(data_idx)
+            deleteChartsKeepSelection(data_idx);
             for (let i = 0; i < ids.length; i++) {
                 createChart(ids[i], sortedData[data_idx]);
             }
@@ -106,7 +106,8 @@ const vis = (newTop = 5) => {
             return '';
         }
 
-        // Make selection only select whole words, credit to Stack Overflow (in acknowledgements)
+        // Make selection only select whole words
+        // sourced from https://stackoverflow.com/a/8506631
         function expandToWord(range) {
             if (range.collapsed) {
                 return;
