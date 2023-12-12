@@ -3,9 +3,9 @@ function barchart_austen() {
   // Based on Mike Bostock's margin convention
   // https://bl.ocks.org/mbostock/3019563
   let margin = {
-      top: 60,
-      left: 50,
-      right: 30,
+      top: 20,
+      left: 70,
+      right: 50,
       bottom: 20
     },
     width = 500 - margin.left - margin.right,
@@ -32,7 +32,7 @@ function barchart_austen() {
 
     //Define scales
     xScale
-      .domain([0, d3.max(data, d => xValue(d))])
+      .domain([0, d3.max(data, d => +xValue(d))])
       .rangeRound([0, width]);
 
     yScale
@@ -42,7 +42,7 @@ function barchart_austen() {
     // X axis
     let xAxis = svg.append("g")
         .attr("transform", "translate(0," + (height) + ")")
-        .call(d3.axisBottom(xScale));
+        .call(d3.axisBottom(xScale).ticks(6));
         
     // X axis label
     xAxis.append("text")        
@@ -58,10 +58,13 @@ function barchart_austen() {
         .attr("transform", "translate(" + yLabelOffsetPx + ", -12)")
         .text(yLabelText);
 
+    
+    // create tooltip object
     let tooltip = d3.select("body")
       .append("div")
       .attr("class", "tooltip")
-      
+    
+    // show probability and count data for the bar that the cursor is hovering over
     let mouseover = function(d) {
       let prob = d.austen_prob
       let count = d.austen_count
@@ -71,17 +74,20 @@ function barchart_austen() {
         .style("visibility", "visible")
     }
 
+    // move tooltip along with mouse movement
     let mousemove = function() {
       tooltip
       .style("left", (d3.event.pageX-55) + "px")
       .style("top", (d3.event.pageY-40) + "px")
     }
 
+    // hide tooltip when mouse is not over a bar
     let mouseleave = function() {
       tooltip
         .style("visibility", "hidden")
     }
 
+    // hide tooltip on click
     let onClick = function(d) {
       tooltip
         .html('')
@@ -89,20 +95,31 @@ function barchart_austen() {
       d3.select("#textbox").selectAll("." + d.unigram).style("color", "#e16031");
     }
 
+    // adjust bar height
     let barHeight = function() {
-      if (yScale.bandwidth()-30 <= 0) {
+      if (yScale.bandwidth() < 40) {
         return yScale.bandwidth()-5;
+      } else if (yScale.bandwidth() < 60) {
+        return yScale.bandwidth()-10;
+      } else if (yScale.bandwidth() < 100) {
+        return yScale.bandwidth()-20;
       }
       return yScale.bandwidth()-30;
     }
 
+    // adjust the location of the bars with respect to the y-axis
     let yScaleHeight = function(d) {
-      if (yScale.bandwidth()-30 <= 0) {
+      if (yScale.bandwidth() < 40) {
         return yScale(d.unigram)+3;
+      } else if (yScale.bandwidth() < 60) {
+        return yScale(d.unigram)+6;
+      } else if (yScale.bandwidth() < 100) {
+        return yScale(d.unigram)+10;
       }
       return yScale(d.unigram)+16;
     }
 
+    // create bars
     let bars = svg.append("g")
         .attr("fill", "#e16031")
       .selectAll()
