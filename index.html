@@ -89,18 +89,20 @@
     <h1>Demo Video</h1>
 
     <video controls width="100%">
-      <source src="http://www.ccs.neu.edu/home/cody/courses/shared/d3-flexible-transitions.mp4" type="video/mp4">
-      <p>Your browser doesn't support HTML5 video. Here is
-       a <a href="http://www.ccs.neu.edu/home/cody/courses/shared/d3-flexible-transitions.mp4">link to the video</a> instead.</p>
+      <source src="/files/demo.mp4" type="video/mp4">
+      <p>Your browser doesn't support HTML5 video.</p>
     </video>
-
-    <h1>Visualization explanation</h1>
 
     <p>We provide views on the most common unigrams at different sizes of window (top 5, top 20, and up to 20 user-selected words).
       These are displayed for each of the texts we drew data from, sorted for the selected text. As the user selects different texts, the ordering of all unigrams adjusts accordingly.
       The user can hover over individual bars displayed in order to obtain more detailed information about the probabilities and raw counts shown.
       The graphs are linked to a snippet of text from the documents, where the words displayed in the bar chart are highlighted in the text, allowing the user to understand more intuitively where the numbers are coming from.
       The user can also select a passage of text directly to see the distributions of those words across all three texts.</p>
+    <p>We used areas and text as the marks in our visualization, as our data originates in text format and area is an effective way of encoding proportion
+      Color was our main channel, identifying data as belonging to a given text. Size was also used within the bar charts to indicate proportion within a given chart.
+      Our main interactions were hovering over a bar to gain insight into the numerical details, as well as brushing over words in the text to see the distributions of those words in the charts.
+      Charts also dynamically reordered to show the top 5 or 20 unigrams based on the selected text.
+    </p>
 
     <div class="thumbnail_holder">
       <div class="thumbnail">
@@ -133,9 +135,11 @@
 	</div>
     <p id="caption"><i>Screenshots of visualization (Click to enlarge each one)</i></p>
 
+    <p>More information regarding our project can be found in the demo video above or through the slides <a href="https://docs.google.com/presentation/d/1WMxEbNFStWYu2vsA5sFvjSUveUwMLgxATgNCjbuRv8M/edit?usp=sharing">here</a>.</p>
+
     <h1>Data Analysis</h1>
     <p>We sourced data from three public domain texts available via <a href="https://www.gutenberg.org/">Project Gutenberg</a>: <i>Alice's Adventures in Wonderland</i>, by Lewis Caroll, <i>Pride and Prejudice</i>, by Jane Austen, and <i>The Great Gatsby</i>, by F. Scott Fitzgerald.
-    We chose these texts as examples of different styles within the same literary domain, long-form fiction, in hopes that this would provide the mosst interesting comparison of n-gram distributions with enough similarity that they could be fairly compared but enough distinction to show interesting trends.
+    We chose these texts as examples of different styles within the same literary domain, long-form fiction, in hopes that this would provide the most interesting comparison of n-gram distributions with enough similarity that they could be fairly compared but enough distinction to show interesting trends.
     </p>
     <p>Annika preprocessed the data to convert it to a form which would be usable by the D3 visualizations. First, the texts were superficially cleaned so that the text only consisted of the body story of each text. These passages were then fed to the <a href="https://spacy.io/api/tokenizer">SpaCy tokenizer</a> in order to split them into sentences and then tokens.
     These were then iterated over in order to produce counts and normalized probability metrics for unigrams, bigrams, and trigrams, though our project ultimately only made use of the unigrams.
@@ -146,7 +150,7 @@
     <p>Through our task analysis, we identified five domain tasks which could be possible avenues of visualization within the domain of n-gram distributions. Ranked from most to least important, with the query, mid-level, and high-level tasks given below each line, these were:</p>
 
     <ol>
-      <li>Understand n-grmams through visualization<br>&emsp;<i>Identify, Explore, Discover, Enjoy</i></li>
+      <li>Understand n-grams through visualization<br>&emsp;<i>Identify, Explore, Discover, Enjoy</i></li>
       <li>Determine how different original texts produce different generations<br>&emsp;<i>Compare, Explore, Discover</i></li>
       <li>Compare frequency of different generation paths<br>&emsp;<i>Identify, Locate, Discover, Enjoy</i></li>
       <li>Identify the words which only occur once in a corpus<br>&emsp;<i>Summarize, Explore, Discover</i></li>
@@ -209,15 +213,18 @@
     <p>While this project is considerably less ambitious than our original ideas per the paper sketches, and does not include every aspect
     of the interactive sketch we assembled, our development was hampered by our group consisting of three JavaScript novices.
     We focused on having a minimal but effective visualization rather than adding in many bells and whistles.</p>
-    <p>Given substantial time to make improvements to the project, we would attempt more items from our list of "nice-to-have" features and possibly
+    <p>Although this visualization is very entertaining and has the potential to be used as a teaching tool, it does not get at any deep
+    insights in the field of natural language processing, which was a hope of ours when we started the project.
+      We believe if we had time to incorporate other visualizations in this domain, however, it could prove more insightful.</p>
+    <p>Improvements that we would like to make in the future would include completing more items from our list of "nice-to-have" features, such as the ability to select an individual bar of the chart to display that word alone in the text,
+       or to include a tutorial for the first time a user loads the page which introduces them to the possible interactions.
+      Given substantial time to make improvements to the project, we would attempt to possibly
     implement other visualizations from our initial sketches in order to explore different aspects of n-grams, including bringing it back
     to our original idea about investigating aspects of generated text from n-gram distributions.</p>
 
     
     <h1>Acknowledgments</h1>
 
-    <p><em>List here where any code, packages/libraries, text, images, designs, etc. that you leverage come from.</em></p>
-    
     <ul>
       <li><a href="https://d3js.org/">D3: Data-Driven Documents</a> by Mike Bostock.</li>
       <li><a href="https://www.gutenberg.org/">Project Gutenberg</a></li>
