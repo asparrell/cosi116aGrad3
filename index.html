@@ -95,13 +95,43 @@
     </video>
 
     <h1>Visualization explanation</h1>
-    
-    <p><em>Final visualization screenshots (PNG images), design justifications, UI walk-through, and linked presentation slides.</em></p>
+
     <p>We provide views on the most common unigrams at different sizes of window (top 5, top 20, and up to 20 user-selected words).
       These are displayed for each of the texts we drew data from, sorted for the selected text. As the user selects different texts, the ordering of all unigrams adjusts accordingly.
       The user can hover over individual bars displayed in order to obtain more detailed information about the probabilities and raw counts shown.
       The graphs are linked to a snippet of text from the documents, where the words displayed in the bar chart are highlighted in the text, allowing the user to understand more intuitively where the numbers are coming from.
       The user can also select a passage of text directly to see the distributions of those words across all three texts.</p>
+
+    <div class="thumbnail_holder">
+      <div class="thumbnail">
+        <img src="/images/final1.png" alt="<i>Default view (top 5)</i>" onclick="enlarge2(this)">
+      </div>
+      <div class="thumbnail">
+        <img src="/images/final2.png" alt="<i>Default view (top 20)</i>" onclick="enlarge2(this)">
+      </div>
+      <div class="thumbnail">
+        <img src="/images/final3.png" alt="<i>Top 5 ranked by <u>Alice</u></i>" onclick="enlarge2(this)">
+      </div>
+      <div class="thumbnail">
+        <img src="/images/final4.png" alt="<i>Top 5 ranked by <u>P & P</u></i>" onclick="enlarge2(this)">
+      </div>
+      <div class="thumbnail">
+        <img src="/images/final5.png" alt="<i>Top 5 ranked by <u>Gatsby</u></i>" onclick="enlarge2(this)">
+      </div>
+      <div class="thumbnail">
+        <img src="/images/final6.png" alt="<i>Hovering for more details</i>" onclick="enlarge2(this)">
+      </div>
+      <div class="thumbnail">
+        <img src="/images/final7.png" alt="<i>Selecting text from <u>Alice</u></i>" onclick="enlarge2(this)">
+      </div>
+      <div class="thumbnail">
+        <img src="/images/final8.png" alt="<i>Selecting text from <u>Gatsby</u></i>" onclick="enlarge2(this)">
+      </div>
+    </div>
+    <div id="shadowbox2">
+      <img id="pictureframe2">
+	</div>
+    <p id="caption"><i>Screenshots of visualization (Click to enlarge each one)</i></p>
 
     <h1>Data Analysis</h1>
     <p>We sourced data from three public domain texts available via <a href="https://www.gutenberg.org/">Project Gutenberg</a>: <i>Alice's Adventures in Wonderland</i>, by Lewis Caroll, <i>Pride and Prejudice</i>, by Jane Austen, and <i>The Great Gatsby</i>, by F. Scott Fitzgerald.
@@ -135,7 +165,7 @@
       This idea translated well to the media of Tableau and D3, which made it a viable choice for the final project.
       It addressed the #1 ranked goal of our domain task table, which is to help users understand n-grams through visualization.
     </p>
-    <div id="thumbnail_holder">
+    <div class="thumbnail_holder">
       <div class="thumbnail">
         <img src="/images/interactive_sketch_1.png" alt="interactive sketch 1" onclick="enlarge(this)">
       </div>
@@ -223,6 +253,18 @@
       let pic = document.getElementById("pictureframe");
       if (pic.src != clicked.src) {
         pic.src = clicked.src;
+      } else {
+        pic.src = "";
+        pic.style.marginTop = "0";
+      }
+      pic.style.border = "1px solid #808080";
+      pic.style.marginTop = "15px";
+    }
+    function enlarge2(clicked) {
+      let pic = document.getElementById("pictureframe2");
+      if (pic.src != clicked.src) {
+        pic.src = clicked.src;
+        document.getElementById("caption").innerHTML = clicked.alt;
       } else {
         pic.src = "";
         pic.style.marginTop = "0";
